@@ -1,11 +1,12 @@
 import type { Product } from "../../types/types";
+import styles from "./ProductCard.module.css";
 
 type ProductCardProps = { product: Product };
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <>
-      <div>
+      <div className={styles.productCard}>
         {/*  Product image */}
         <img src={product.imageUrl} alt="Produktfoto" />
         {/* Product information */}
@@ -13,6 +14,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <p>Anzahl {product.stockNumber}</p>
         <p>{product.price} €</p>
         {/* Button to add product to cart */}
+        <button>Add to Cart</button>
       </div>
     </>
   );

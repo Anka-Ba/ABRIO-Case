@@ -1,0 +1,14 @@
+/* Product image */
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* Container of the whole product card */
+.productCard {
+  border: 3px solid #ccc;
+  border-radius: 15px;
+  padding: 16px;
+  text-align: center;
+  width: 200px;
+}
