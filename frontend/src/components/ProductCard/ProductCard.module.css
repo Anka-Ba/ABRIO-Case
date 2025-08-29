@@ -10,5 +10,7 @@ img {
   border-radius: 15px;
   padding: 16px;
   text-align: center;
-  width: 200px;
+  width: 80%;
+  justify-self: center;
+  margin-bottom: 5vh;
 }

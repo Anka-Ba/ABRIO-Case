@@ -1,0 +1,17 @@
+.listContainer {
+  display: grid;
+}
+
+/* Grid with three columns on large screen, so three products are displayed in one row */
+@media only screen and (min-width: 600px) {
+  .listContainer {
+    grid-template-columns: repeat(3, 33% [col-start]);
+  }
+}
+
+/* Grid with only one column on small screens, e.g. mobile devices */
+@media only screen and (max-width: 600px) {
+  .listContainer {
+    grid-template-columns: [col-start] 100% [col-end];
+  }
+}
