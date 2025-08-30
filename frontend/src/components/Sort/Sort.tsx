@@ -1,8 +1,9 @@
-import { useState } from "react";
+type SortProps = {
+  sortOrder: "asc" | "desc" | null;
+  setSortOrder: React.Dispatch<React.SetStateAction<"asc" | "desc" | null>>;
+};
 
-export const Sort = () => {
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
-
+export const Sort = ({ sortOrder, setSortOrder }: SortProps) => {
   /**
    * Updates the sort order state
    * If the selected order is unselected, the state is set to null

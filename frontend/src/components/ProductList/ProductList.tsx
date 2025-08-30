@@ -5,11 +5,24 @@ import styles from "./ProductList.module.css";
 
 type ProductListProps = {
   products: Array<Product>;
+  sortOrder: "asc" | "desc" | null;
 };
 
-export const ProductList = ({ products }: ProductListProps) => {
+export const ProductList = ({ products, sortOrder }: ProductListProps) => {
+  // Get the currently selected filter options from context
   const currentFilterCriteria = useFilterOptions();
-  console.log(currentFilterCriteria);
+
+  // Function to sort products based on price and selected sort order
+  const compareByPrice = (productOne: Product, productTwo: Product) => {
+    if (sortOrder === "asc") {
+      return productOne.price - productTwo.price; // Ascending order
+    } else if (sortOrder === "desc") {
+      return productTwo.price - productOne.price; // Descending order
+    } else {
+      return 0; // No sorting
+    }
+  };
+
   return (
     <div className={styles.listContainer}>
       {/* Display a product card for each product */}
@@ -28,6 +41,8 @@ export const ProductList = ({ products }: ProductListProps) => {
               product.categories.includes(category),
             ) || currentFilterCriteria.categories.length === 0, // Show all categories if no category is selected
         )
+        // Sort products based on price and selected sort order
+        .sort(compareByPrice)
         .map((product) => (
           <ProductCard product={product} key={product.id} />
         ))}
