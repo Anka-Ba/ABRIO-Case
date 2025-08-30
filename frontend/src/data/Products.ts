@@ -8,7 +8,7 @@ export const products: Product[] = [
     title: "Produkt 1",
     stockNumber: 0,
     price: 10.0,
-    color: "ROT",
+    color: "Rot",
     categories: ["A"],
   },
   {
@@ -17,7 +17,7 @@ export const products: Product[] = [
     title: "Produkt 2",
     stockNumber: 3,
     price: 8.99,
-    color: "BLAU",
+    color: "Blau",
     categories: ["A"],
   },
   {
@@ -26,7 +26,7 @@ export const products: Product[] = [
     title: "Produkt 3",
     stockNumber: 5,
     price: 8.99,
-    color: "BLAU",
+    color: "Blau",
     categories: ["A"],
   },
   {
@@ -35,7 +35,7 @@ export const products: Product[] = [
     title: "Produkt 4",
     stockNumber: 10,
     price: 9.99,
-    color: "ROT",
+    color: "Rot",
     categories: ["A", "B"],
   },
   {
@@ -44,7 +44,7 @@ export const products: Product[] = [
     title: "Produkt 5",
     stockNumber: 5,
     price: 12.99,
-    color: "GRÜN",
+    color: "Grün",
     categories: ["B", "C"],
   },
   {
@@ -53,7 +53,7 @@ export const products: Product[] = [
     title: "Produkt 6",
     stockNumber: 3,
     price: 11.99,
-    color: "ROT",
+    color: "Rot",
     categories: ["A", "B", "C"],
   },
   {
@@ -62,7 +62,7 @@ export const products: Product[] = [
     title: "Produkt 7",
     stockNumber: 6,
     price: 10.99,
-    color: "GRÜN",
+    color: "Grün",
     categories: ["A", "C"],
   },
   {
@@ -71,7 +71,7 @@ export const products: Product[] = [
     title: "Produkt 8",
     stockNumber: 2,
     price: 10.49,
-    color: "GRÜN",
+    color: "Grün",
     categories: ["B"],
   },
   {
@@ -80,7 +80,7 @@ export const products: Product[] = [
     title: "Produkt 9",
     stockNumber: 1,
     price: 9.99,
-    color: "BLAU",
+    color: "Blau",
     categories: ["C"],
   },
 ];
