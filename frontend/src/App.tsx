@@ -3,6 +3,7 @@ import { Filter } from "./components/Filter/Filter";
 import { FilterProvider } from "./components/Filter/FilterReducer";
 import { ProductList } from "./components/ProductList/ProductList";
 import { products } from "./data/Products";
+import { Sort } from "./components/Sort/Sort";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       and the dispatch function to update them */}
       <FilterProvider>
         <Filter />
+        <Sort />
         <ProductList products={products} />
       </FilterProvider>
     </>
