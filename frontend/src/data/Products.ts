@@ -3,7 +3,7 @@ import type { Product } from "../types/types";
 
 export const products: Product[] = [
   {
-    id: 1,
+    id: "1",
     imageUrl: PlaceholderImage,
     title: "Produkt 1",
     stockNumber: 0,
@@ -13,7 +13,7 @@ export const products: Product[] = [
     cartQuantity: 0,
   },
   {
-    id: 2,
+    id: "2",
     imageUrl: PlaceholderImage,
     title: "Produkt 2",
     stockNumber: 3,
@@ -23,7 +23,7 @@ export const products: Product[] = [
     cartQuantity: 0,
   },
   {
-    id: 3,
+    id: "3",
     imageUrl: PlaceholderImage,
     title: "Produkt 3",
     stockNumber: 5,
@@ -33,7 +33,7 @@ export const products: Product[] = [
     cartQuantity: 0,
   },
   {
-    id: 4,
+    id: "4",
     imageUrl: PlaceholderImage,
     title: "Produkt 4",
     stockNumber: 10,
@@ -43,7 +43,7 @@ export const products: Product[] = [
     cartQuantity: 0,
   },
   {
-    id: 5,
+    id: "5",
     imageUrl: PlaceholderImage,
     title: "Produkt 5",
     stockNumber: 5,
@@ -53,7 +53,7 @@ export const products: Product[] = [
     cartQuantity: 0,
   },
   {
-    id: 6,
+    id: "6",
     imageUrl: PlaceholderImage,
     title: "Produkt 6",
     stockNumber: 3,
@@ -63,7 +63,7 @@ export const products: Product[] = [
     cartQuantity: 0,
   },
   {
-    id: 7,
+    id: "7",
     imageUrl: PlaceholderImage,
     title: "Produkt 7",
     stockNumber: 6,
@@ -73,7 +73,7 @@ export const products: Product[] = [
     cartQuantity: 0,
   },
   {
-    id: 8,
+    id: "8",
     imageUrl: PlaceholderImage,
     title: "Produkt 8",
     stockNumber: 2,
@@ -83,7 +83,7 @@ export const products: Product[] = [
     cartQuantity: 0,
   },
   {
-    id: 9,
+    id: "9",
     imageUrl: PlaceholderImage,
     title: "Produkt 9",
     stockNumber: 1,

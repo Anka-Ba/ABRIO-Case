@@ -4,7 +4,7 @@ export type FilterOptions = Color | Category;
 export type FilterName = "Farbe" | "Kategorie";
 
 export type Product = {
-  id: string | number;
+  id: string;
   imageUrl: string;
   title: string;
   stockNumber: number;

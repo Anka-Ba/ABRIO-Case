@@ -11,11 +11,11 @@ function App() {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
 
   // Fetch products from database
-  const { productList, loading, error } = useFetchProducts();
+  const { productList, loading, error, fetchProductList } = useFetchProducts();
 
-  if (loading) {
+  /* if (loading) {
     return <div>Loading...</div>;
-  }
+  } */
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -28,7 +28,11 @@ function App() {
       <FilterProvider>
         <Filter />
         <Sort sortOrder={sortOrder} setSortOrder={setSortOrder} />
-        <ProductList products={productList} sortOrder={sortOrder} />
+        <ProductList
+          products={productList}
+          sortOrder={sortOrder}
+          fetchProductList={fetchProductList}
+        />
       </FilterProvider>
     </>
   );

@@ -6,9 +6,14 @@ import styles from "./ProductList.module.css";
 type ProductListProps = {
   products: Array<Product>;
   sortOrder: "asc" | "desc" | null;
+  fetchProductList: () => Promise<void>;
 };
 
-export const ProductList = ({ products, sortOrder }: ProductListProps) => {
+export const ProductList = ({
+  products,
+  sortOrder,
+  fetchProductList,
+}: ProductListProps) => {
   // Get the currently selected filter options from context
   const currentFilterCriteria = useFilterOptions();
 
@@ -44,7 +49,11 @@ export const ProductList = ({ products, sortOrder }: ProductListProps) => {
         // Sort products based on price and selected sort order
         .sort(compareByPrice)
         .map((product) => (
-          <ProductCard product={product} key={product.id} />
+          <ProductCard
+            product={product}
+            key={product.id}
+            fetchProductList={fetchProductList}
+          />
         ))}
     </div>
   );

@@ -9,29 +9,34 @@ export const useFetchProducts = () => {
   const [productList, setProductList] = useState<Product[]>([]);
   const productCollection = collection(db, "Product");
 
-  useEffect(() => {
-    const getProductList = async () => {
-      setLoading(true);
-      try {
-        /* const data = await getDocs(productCollection); */ // Order as fetched
-        const data = await getDocs(query(productCollection, orderBy("title"))); // Order by title
+  /**
+   * Fetches the products list from the database
+   * Can be used to refetch data
+   */
+  const fetchProductList = async () => {
+    setLoading(true);
+    try {
+      /* const data = await getDocs(productCollection); */ // Order as fetched
+      const data = await getDocs(query(productCollection, orderBy("title"))); // Order by title
 
-        // Filter the product data and ids from the fetched documents (document = entry in collection)
-        const filteredData = data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
-        console.log(filteredData);
-        setProductList(filteredData as Product[]);
-      } catch (err) {
-        console.error("Error fetching products: ", err);
-        setError(err instanceof Error ? err.message : String(err));
-      } finally {
-        setLoading(false);
-      }
-    };
-    getProductList();
+      // Filter the product data and ids from the fetched documents (document = entry in collection)
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      console.log(filteredData);
+      setProductList(filteredData as Product[]);
+    } catch (err) {
+      console.error("Error fetching products: ", err);
+      setError(err instanceof Error ? err.message : String(err));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProductList();
   }, []);
 
-  return { productList, loading, error };
+  return { productList, loading, error, fetchProductList };
 };
