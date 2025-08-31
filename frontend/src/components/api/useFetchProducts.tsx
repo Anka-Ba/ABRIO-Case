@@ -57,8 +57,8 @@ export const useFetchProducts = () => {
       const snapshot = await getDocs(productCollection);
 
       const batch = writeBatch(db);
-      snapshot.docs.forEach((d) => {
-        batch.update(doc(db, "Product", d.id), { [fieldName]: value });
+      snapshot.docs.forEach((product) => {
+        batch.update(doc(db, "Product", product.id), { [fieldName]: value });
       });
 
       await batch.commit();

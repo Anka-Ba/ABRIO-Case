@@ -36,8 +36,13 @@ export const ProductCard = ({
         <h2>{product.title}</h2>
         <p>Anzahl {product.stockNumber}</p>
         <p>{product.price} €</p>
-        {/* Button to add product to cart */}
-        <button onClick={() => addToCart(product.id)}>Add to Cart</button>
+        {/* Button to add product to cart, disabled if available amount was added to cart */}
+        <button
+          disabled={product.cartQuantity >= product.stockNumber}
+          onClick={() => addToCart(product.id)}
+        >
+          Add to Cart
+        </button>
       </div>
     </>
   );
