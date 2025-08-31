@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import type { Product } from "../../types/types";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  writeBatch,
+} from "firebase/firestore";
 import { db } from "../../config/firebase";
 
 export const useFetchProducts = () => {
@@ -38,5 +45,28 @@ export const useFetchProducts = () => {
     fetchProductList();
   }, []);
 
-  return { productList, loading, error, fetchProductList };
+  /**
+   * Sets fieldName to value for all products
+   * Using a batch ensures that all fields are updated at once
+   * @param fieldName
+   * @param value
+   */
+  const updateFields = async (fieldName: string, value: number | string) => {
+    try {
+      const productCollection = collection(db, "Product");
+      const snapshot = await getDocs(productCollection);
+
+      const batch = writeBatch(db);
+      snapshot.docs.forEach((d) => {
+        batch.update(doc(db, "Product", d.id), { [fieldName]: value });
+      });
+
+      await batch.commit();
+    } catch (err) {
+      console.error("Error updating products: ", err);
+      setError(err instanceof Error ? err.message : String(err));
+    }
+  };
+
+  return { productList, loading, error, fetchProductList, updateFields };
 };

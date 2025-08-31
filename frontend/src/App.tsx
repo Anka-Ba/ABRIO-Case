@@ -6,12 +6,14 @@ import { ProductList } from "./components/ProductList/ProductList";
 import { Sort } from "./components/Sort/Sort";
 import { useState } from "react";
 import { useFetchProducts } from "./components/api/useFetchProducts";
+import { ShoppingCart } from "./components/ShoppingCart/ShoppingCart";
 
 function App() {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
 
   // Fetch products from database
-  const { productList, loading, error, fetchProductList } = useFetchProducts();
+  const { productList, loading, error, fetchProductList, updateFields } =
+    useFetchProducts();
 
   /* if (loading) {
     return <div>Loading...</div>;
@@ -32,6 +34,11 @@ function App() {
           products={productList}
           sortOrder={sortOrder}
           fetchProductList={fetchProductList}
+        />
+        <ShoppingCart
+          products={productList}
+          fetchProductList={fetchProductList}
+          updateFields={updateFields}
         />
       </FilterProvider>
     </>
