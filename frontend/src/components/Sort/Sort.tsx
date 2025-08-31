@@ -19,6 +19,7 @@ export const Sort = ({ sortOrder, setSortOrder }: SortProps) => {
 
   return (
     <>
+      <h3>Sortieren</h3>
       {/* Sort by ascending price */}
       <label htmlFor="orderAsc">Preis aufsteigend</label>
       <input

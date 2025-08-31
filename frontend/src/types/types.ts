@@ -4,13 +4,14 @@ export type FilterOptions = Color | Category;
 export type FilterName = "Farbe" | "Kategorie";
 
 export type Product = {
-  id: number;
+  id: string | number;
   imageUrl: string;
   title: string;
   stockNumber: number;
   price: number;
   color: Color;
   categories: Array<Category>;
+  cartQuantity: number;
 };
 
 /* All filter options currently chosen by the user */

@@ -10,6 +10,7 @@ export const products: Product[] = [
     price: 10.0,
     color: "Rot",
     categories: ["A"],
+    cartQuantity: 0,
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ export const products: Product[] = [
     price: 8.99,
     color: "Blau",
     categories: ["A"],
+    cartQuantity: 0,
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ export const products: Product[] = [
     price: 8.99,
     color: "Blau",
     categories: ["A"],
+    cartQuantity: 0,
   },
   {
     id: 4,
@@ -37,6 +40,7 @@ export const products: Product[] = [
     price: 9.99,
     color: "Rot",
     categories: ["A", "B"],
+    cartQuantity: 0,
   },
   {
     id: 5,
@@ -46,6 +50,7 @@ export const products: Product[] = [
     price: 12.99,
     color: "Grün",
     categories: ["B", "C"],
+    cartQuantity: 0,
   },
   {
     id: 6,
@@ -55,6 +60,7 @@ export const products: Product[] = [
     price: 11.99,
     color: "Rot",
     categories: ["A", "B", "C"],
+    cartQuantity: 0,
   },
   {
     id: 7,
@@ -64,6 +70,7 @@ export const products: Product[] = [
     price: 10.99,
     color: "Grün",
     categories: ["A", "C"],
+    cartQuantity: 0,
   },
   {
     id: 8,
@@ -73,6 +80,7 @@ export const products: Product[] = [
     price: 10.49,
     color: "Grün",
     categories: ["B"],
+    cartQuantity: 0,
   },
   {
     id: 9,
@@ -82,5 +90,6 @@ export const products: Product[] = [
     price: 9.99,
     color: "Blau",
     categories: ["C"],
+    cartQuantity: 0,
   },
 ];
