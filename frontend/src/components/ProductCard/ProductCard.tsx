@@ -35,8 +35,9 @@ export const ProductCard = ({
           <img src={product.imageUrl || PlaceholderImage} alt="Produktfoto" />
         </div>
         <div className={styles.productInfo}>
-          {/* Product information */}
+          {/* Product information: title, stock number, price */}
           <h2>{product.title}</h2>
+          {/* Show stock number or sold out */}
           {product.stockNumber > 0 ? (
             <p>Noch {product.stockNumber} verfügbar</p>
           ) : (
@@ -44,7 +45,7 @@ export const ProductCard = ({
           )}
 
           <p>{product.price} €</p>
-          {/* Button to add product to cart, disabled if available amount was added to cart */}
+          {/* Button to add product to cart, disabled if available amount has already been added to the cart */}
           <button
             className={styles.cartButton}
             disabled={product.cartQuantity >= product.stockNumber}

@@ -15,6 +15,7 @@ function App() {
   const { productList, error, fetchProductList, updateFields } =
     useFetchProducts();
 
+  // Show error if error occured fetching the products
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -25,14 +26,17 @@ function App() {
       and the dispatch function to update them */}
       <FilterProvider>
         <div className={styles.sortAndFilter}>
+          {/* Filter and sort functionality */}
           <Filter />
           <Sort sortOrder={sortOrder} setSortOrder={setSortOrder} />
         </div>
+        {/* List of products */}
         <ProductList
           products={productList}
           sortOrder={sortOrder}
           fetchProductList={fetchProductList}
         />
+        {/* Products added to the shopping cart */}
         <ShoppingCart
           products={productList}
           fetchProductList={fetchProductList}

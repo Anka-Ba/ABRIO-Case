@@ -41,6 +41,7 @@ export const useFetchProducts = () => {
     }
   };
 
+  // Fetch data on component mount
   useEffect(() => {
     fetchProductList();
   }, []);

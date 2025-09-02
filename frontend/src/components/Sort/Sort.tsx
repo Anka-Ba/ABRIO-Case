@@ -25,7 +25,6 @@ export const Sort = ({ sortOrder, setSortOrder }: SortProps) => {
         <h3>Sortieren</h3>
         <div>
           {/* Sort by ascending price */}
-
           <input
             className={styles.sortInput}
             type="checkbox"
@@ -41,8 +40,8 @@ export const Sort = ({ sortOrder, setSortOrder }: SortProps) => {
           >
             Preis aufsteigend
           </label>
-          {/* Sort by descending price */}
 
+          {/* Sort by descending price */}
           <input
             className={styles.sortInput}
             type="checkbox"

@@ -51,7 +51,7 @@ export const ShoppingCart = ({
         <h3>Summe</h3>
         {totalPrice} €
         <div>
-          {/* Button to clear the cart appears when cart is not empty*/}
+          {/* Button to clear the cart appears when cart is not empty, i.e. the price is greater than 0*/}
           {Number(totalPrice) > 0 && (
             <button
               className={styles.clearCartButton}

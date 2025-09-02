@@ -16,7 +16,7 @@ const CheckboxFilter = ({
   const dispatch = useFilterDispatch();
 
   /**
-   * Adds or removes a filter option
+   * Adds or removes a filter option by dispatching an action object to the filter reducer
    * @param label Filter option to add or remove
    * @param checked If true, the filter option is added, otherwise it is removed
    */

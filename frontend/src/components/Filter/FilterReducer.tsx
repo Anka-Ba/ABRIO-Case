@@ -7,6 +7,12 @@ import type {
 } from "../../types/types";
 import type { ReactNode } from "react";
 
+/**
+ * Updates the currently selected filter options based on the type of action desired and the optional payload
+ * @param filterOptions
+ * @param action
+ * @returns the updated selected filter options
+ */
 export const filterReducer: Reducer<ActiveFilterOptions, FilterAction> = (
   filterOptions,
   action,
@@ -74,21 +80,23 @@ export const filterReducer: Reducer<ActiveFilterOptions, FilterAction> = (
   }
 };
 
-/**
- * Provides the filter context to its children components
- * React docs page: https://react.dev/learn/scaling-up-with-reducer-and-context
- * @param children Can access the current filter options and dispatch actions to update them
- *
- */
-// Contexts must be defined outside the component to be accessible globally
+// Context for filter options
 export const FilterContext = createContext<ActiveFilterOptions>({
   colors: [],
   categories: [],
 });
+
+// Context for dispatch function
 export const FilterDispatchContext = createContext<
   React.Dispatch<FilterAction>
 >(() => {});
 
+/**
+ * Provides the filter context to its child components
+ * React docs page: https://react.dev/learn/scaling-up-with-reducer-and-context
+ * @param children Can access the current filter options and dispatch actions to update them
+ *
+ */
 export const FilterProvider = ({ children }: { children: ReactNode }) => {
   const [filterOptions, dispatch] = useReducer(filterReducer, {
     colors: [],
@@ -104,7 +112,7 @@ export const FilterProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Custom hook for accessing the currently selcted filter options
+// Custom hook for accessing the currently selected filter options
 export const useFilterOptions = () => {
   return useContext(FilterContext);
 };
