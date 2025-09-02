@@ -1,12 +1,18 @@
 import type { FilterName, FilterOptions } from "../../types/types";
 import { useFilterDispatch } from "./FilterReducer";
+import styles from "./Filter.module.css";
 
 type CheckboxFilterProps = {
   filterName: FilterName;
   labels: Array<FilterOptions>;
+  checkBoxColors?: Array<string>;
 };
 
-const CheckboxFilter = ({ filterName, labels }: CheckboxFilterProps) => {
+const CheckboxFilter = ({
+  filterName,
+  labels,
+  checkBoxColors,
+}: CheckboxFilterProps) => {
   const dispatch = useFilterDispatch();
 
   /**
@@ -28,29 +34,52 @@ const CheckboxFilter = ({ filterName, labels }: CheckboxFilterProps) => {
     }
   };
   return (
-    <>
+    <div className={styles.checkboxAndTitle}>
       <h3>{filterName}</h3>
-      {/* Display one checkbox for each filter option */}
-      {labels.map((label) => (
-        <span key={label}>
-          <label htmlFor={label}>{label}</label>
-          <input
-            type="checkbox"
-            name={label}
-            id={label}
-            onChange={(e) => onCheckboxChange(label, e.target.checked)}
-          />
-        </span>
-      ))}
-    </>
+      <div className={styles.checkboxContainer}>
+        {/* Display one checkbox for each filter option */}
+        {labels.map((label, index) => (
+          <span key={label}>
+            <div className={styles.checkboxAndLabel}>
+              <div>
+                <label htmlFor={label}>{label}</label>
+              </div>
+              <div>
+                <input
+                  className={
+                    checkBoxColors ? styles.colorInput : styles.filterInput
+                  }
+                  // Optionally, the colors for the checkboxes can be passed as a prop
+                  style={
+                    {
+                      "--color": checkBoxColors?.[index],
+                    } as React.CSSProperties
+                  }
+                  type="checkbox"
+                  name={label}
+                  id={label}
+                  onChange={(e) => onCheckboxChange(label, e.target.checked)}
+                />
+              </div>
+            </div>
+          </span>
+        ))}
+      </div>
+    </div>
   );
 };
 
 export const Filter = () => {
   return (
-    <div>
+    <div className={styles.filterContainer}>
+      {/*  Filter for category */}
       <CheckboxFilter filterName="Kategorie" labels={["A", "B", "C"]} />
-      <CheckboxFilter filterName="Farbe" labels={["Rot", "Grün", "Blau"]} />
+      {/* Filter for color */}
+      <CheckboxFilter
+        filterName="Farbe"
+        labels={["Rot", "Grün", "Blau"]}
+        checkBoxColors={["red", "green", "blue"]}
+      />
     </div>
   );
 };

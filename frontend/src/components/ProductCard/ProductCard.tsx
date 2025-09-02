@@ -31,18 +31,28 @@ export const ProductCard = ({
     <>
       <div className={styles.productCard}>
         {/*  Product image, show placeholder if no image available*/}
-        <img src={product.imageUrl || PlaceholderImage} alt="Produktfoto" />
-        {/* Product information */}
-        <h2>{product.title}</h2>
-        <p>Anzahl {product.stockNumber}</p>
-        <p>{product.price} €</p>
-        {/* Button to add product to cart, disabled if available amount was added to cart */}
-        <button
-          disabled={product.cartQuantity >= product.stockNumber}
-          onClick={() => addToCart(product.id)}
-        >
-          Add to Cart
-        </button>
+        <div className={styles.imageContainer}>
+          <img src={product.imageUrl || PlaceholderImage} alt="Produktfoto" />
+        </div>
+        <div className={styles.productInfo}>
+          {/* Product information */}
+          <h2>{product.title}</h2>
+          {product.stockNumber > 0 ? (
+            <p>Noch {product.stockNumber} verfügbar</p>
+          ) : (
+            <p className={styles.soldOut}>Ausverkauft</p>
+          )}
+
+          <p>{product.price} €</p>
+          {/* Button to add product to cart, disabled if available amount was added to cart */}
+          <button
+            className={styles.cartButton}
+            disabled={product.cartQuantity >= product.stockNumber}
+            onClick={() => addToCart(product.id)}
+          >
+            In den Warenkorb
+          </button>
+        </div>
       </div>
     </>
   );

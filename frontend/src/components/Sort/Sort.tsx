@@ -1,3 +1,5 @@
+import styles from "./Sort.module.css";
+
 type SortProps = {
   sortOrder: "asc" | "desc" | null;
   setSortOrder: React.Dispatch<React.SetStateAction<"asc" | "desc" | null>>;
@@ -19,27 +21,45 @@ export const Sort = ({ sortOrder, setSortOrder }: SortProps) => {
 
   return (
     <>
-      <h3>Sortieren</h3>
-      {/* Sort by ascending price */}
-      <label htmlFor="orderAsc">Preis aufsteigend</label>
-      <input
-        type="checkbox"
-        id="orderAsc"
-        name="sortOrder"
-        value="asc"
-        checked={sortOrder === "asc"}
-        onChange={() => handleSortChange("asc")}
-      />
-      {/* Sort by descending price */}
-      <label htmlFor="orderDesc">Preis absteigend</label>
-      <input
-        type="checkbox"
-        id="orderDesc"
-        name="sortOrder"
-        value="desc"
-        checked={sortOrder === "desc"}
-        onChange={() => handleSortChange("desc")}
-      />
+      <div className={styles.sortContainer}>
+        <h3>Sortieren</h3>
+        <div>
+          {/* Sort by ascending price */}
+
+          <input
+            className={styles.sortInput}
+            type="checkbox"
+            id="orderAsc"
+            name="sortOrder"
+            value="asc"
+            checked={sortOrder === "asc"}
+            onChange={() => handleSortChange("asc")}
+          />
+          <label
+            className={`${styles.sortLabel} ${styles.sortAscending}`}
+            htmlFor="orderAsc"
+          >
+            Preis aufsteigend
+          </label>
+          {/* Sort by descending price */}
+
+          <input
+            className={styles.sortInput}
+            type="checkbox"
+            id="orderDesc"
+            name="sortOrder"
+            value="desc"
+            checked={sortOrder === "desc"}
+            onChange={() => handleSortChange("desc")}
+          />
+          <label
+            className={`${styles.sortLabel} ${styles.sortDescending}`}
+            htmlFor="orderDesc"
+          >
+            Preis absteigend
+          </label>
+        </div>
+      </div>
     </>
   );
 };

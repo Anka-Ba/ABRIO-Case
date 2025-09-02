@@ -3,6 +3,7 @@ export type Category = "A" | "B" | "C";
 export type FilterOptions = Color | Category;
 export type FilterName = "Farbe" | "Kategorie";
 
+// Type for the individual products
 export type Product = {
   id: string;
   imageUrl: string;
@@ -14,12 +15,13 @@ export type Product = {
   cartQuantity: number;
 };
 
-/* All filter options currently chosen by the user */
+// All filter options currently chosen by the user
 export type ActiveFilterOptions = {
   colors: Array<Color>;
   categories: Array<Category>;
 };
 
+// Types for the filter reducer
 export type FilterActionType =
   | "ADD_FILTER_OPTION"
   | "REMOVE_FILTER_OPTION"

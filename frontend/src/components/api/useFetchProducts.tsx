@@ -53,7 +53,6 @@ export const useFetchProducts = () => {
    */
   const updateFields = async (fieldName: string, value: number | string) => {
     try {
-      const productCollection = collection(db, "Product");
       const snapshot = await getDocs(productCollection);
 
       const batch = writeBatch(db);

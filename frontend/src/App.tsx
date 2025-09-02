@@ -1,4 +1,3 @@
-import "./App.css";
 import { Filter } from "./components/Filter/Filter";
 import { FilterProvider } from "./components/Filter/FilterReducer";
 import { ProductList } from "./components/ProductList/ProductList";
@@ -7,17 +6,14 @@ import { Sort } from "./components/Sort/Sort";
 import { useState } from "react";
 import { useFetchProducts } from "./components/api/useFetchProducts";
 import { ShoppingCart } from "./components/ShoppingCart/ShoppingCart";
+import styles from "./App.module.css";
 
 function App() {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
 
   // Fetch products from database
-  const { productList, loading, error, fetchProductList, updateFields } =
+  const { productList, error, fetchProductList, updateFields } =
     useFetchProducts();
-
-  /* if (loading) {
-    return <div>Loading...</div>;
-  } */
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -28,8 +24,10 @@ function App() {
       {/* The FilterProvider enables all children to access the currently selected filter options
       and the dispatch function to update them */}
       <FilterProvider>
-        <Filter />
-        <Sort sortOrder={sortOrder} setSortOrder={setSortOrder} />
+        <div className={styles.sortAndFilter}>
+          <Filter />
+          <Sort sortOrder={sortOrder} setSortOrder={setSortOrder} />
+        </div>
         <ProductList
           products={productList}
           sortOrder={sortOrder}

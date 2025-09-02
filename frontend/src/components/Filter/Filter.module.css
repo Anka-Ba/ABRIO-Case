@@ -1,0 +1,61 @@
+.filterContainer {
+  display: flex;
+  text-align: center;
+  margin-bottom: 5vh;
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: 1.7;
+}
+
+.checkboxContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.1em;
+  gap: 0.5em;
+}
+
+.checkboxAndTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
+
+@media (max-width: 600px) {
+  .checkboxAndTitle {
+    margin-top: 2em;
+  }
+}
+
+.checkboxAndLabel {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+  align-items: center;
+}
+
+.filterInput {
+  width: 2em;
+  height: 2em;
+  vertical-align: middle;
+  outline: none;
+  cursor: pointer;
+}
+
+.colorInput {
+  width: 2em;
+  height: 2em;
+  background-color: white;
+  vertical-align: middle;
+  outline: none;
+  cursor: pointer;
+}
+
+.colorInput:checked {
+  accent-color: var(--color);
+  opacity: 0.5;
+}

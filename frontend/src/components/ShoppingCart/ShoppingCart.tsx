@@ -1,4 +1,5 @@
 import type { Product } from "../../types/types";
+import styles from "./ShoppingCart.module.css";
 
 type ShoppingCartProps = {
   products: Product[];
@@ -31,22 +32,36 @@ export const ShoppingCart = ({
   };
 
   return (
-    <>
-      <h2>Warenkorb</h2>
-      {products.map((product) => {
-        return (
-          product.cartQuantity > 0 && (
-            <div key={product.id}>
-              {product.title} × {product.cartQuantity}
-            </div>
-          )
-        );
-      })}
-      <h3>Summe</h3>
-      {totalPrice} €
-      <div>
-        <button onClick={() => clearCart()}>Clear cart</button>
+    <div className={styles.cartContainer}>
+      <div className={styles.listContainer}>
+        {/*  Products and amount added to the cart */}
+        <h2>Warenkorb</h2>
+        {products.map((product) => {
+          return (
+            product.cartQuantity > 0 && (
+              <div key={product.id}>
+                {product.title} × {product.cartQuantity}
+              </div>
+            )
+          );
+        })}
       </div>
-    </>
+      {/* Calculated total price of all products in the cart */}
+      <div className={styles.sumContainer}>
+        <h3>Summe</h3>
+        {totalPrice} €
+        <div>
+          {/* Button to clear the cart appears when cart is not empty*/}
+          {Number(totalPrice) > 0 && (
+            <button
+              className={styles.clearCartButton}
+              onClick={() => clearCart()}
+            >
+              Warenkorb leeren
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };

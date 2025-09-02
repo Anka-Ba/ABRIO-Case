@@ -1,0 +1,40 @@
+.sortContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.sortInput {
+  display: none;
+}
+
+.sortLabel {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.5em 2.5em 0.5em 1.5em;
+  border: 2px solid #8d8c8c;
+  border-radius: 15px;
+  margin: 0.5em;
+  transition-duration: 0.2s;
+}
+
+.sortDescending {
+  background: url(../../assets/icons/down-arrow.svg) no-repeat center;
+  background-size: 15%;
+  background-position-x: 96%;
+}
+
+.sortAscending {
+  background: url(../../assets/icons/up-arrow.svg) no-repeat center;
+  background-size: 15%;
+  background-position-x: 96%;
+}
+
+.sortInput:checked + .sortLabel {
+  background-color: #a7d4d656;
+  border-color: #4f5555;
+}
+
+.sortLabel:hover {
+  background-color: #a7d4d62f;
+}
