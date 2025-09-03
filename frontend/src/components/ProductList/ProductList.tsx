@@ -7,12 +7,18 @@ type ProductListProps = {
   products: Array<Product>;
   sortOrder: "asc" | "desc" | null;
   fetchProductList: () => Promise<void>;
+  updateSingleField: (
+    fieldName: string,
+    value: string | number,
+    id: string,
+  ) => Promise<void>;
 };
 
 export const ProductList = ({
   products,
   sortOrder,
   fetchProductList,
+  updateSingleField,
 }: ProductListProps) => {
   // Get the currently selected filter options from context
   const currentFilterCriteria = useFilterOptions();
@@ -53,6 +59,7 @@ export const ProductList = ({
             product={product}
             key={product.id}
             fetchProductList={fetchProductList}
+            updateSingleField={updateSingleField}
           />
         ))}
     </div>

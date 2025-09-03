@@ -12,8 +12,13 @@ function App() {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
 
   // Fetch products from database
-  const { productList, error, fetchProductList, updateFields } =
-    useFetchProducts();
+  const {
+    productList,
+    error,
+    fetchProductList,
+    updateFields,
+    updateSingleField,
+  } = useFetchProducts();
 
   // Show error if error occured fetching the products
   if (error) {
@@ -35,12 +40,14 @@ function App() {
           products={productList}
           sortOrder={sortOrder}
           fetchProductList={fetchProductList}
+          updateSingleField={updateSingleField}
         />
         {/* Products added to the shopping cart */}
         <ShoppingCart
           products={productList}
           fetchProductList={fetchProductList}
           updateFields={updateFields}
+          updateSingleField={updateSingleField}
         />
       </FilterProvider>
     </>

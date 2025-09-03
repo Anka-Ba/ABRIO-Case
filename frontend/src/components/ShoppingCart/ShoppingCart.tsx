@@ -5,6 +5,11 @@ type ShoppingCartProps = {
   products: Product[];
   fetchProductList: () => Promise<void>;
   updateFields: (fieldName: string, value: string | number) => Promise<void>;
+  updateSingleField: (
+    fieldName: string,
+    value: string | number,
+    id: string,
+  ) => Promise<void>;
 };
 
 /**
@@ -15,6 +20,7 @@ export const ShoppingCart = ({
   products,
   fetchProductList,
   updateFields,
+  /* updateSingleField, */
 }: ShoppingCartProps) => {
   // Calculate the total price with two decimals
   const totalPrice = products
@@ -24,10 +30,17 @@ export const ShoppingCart = ({
     .toFixed(2);
 
   /**
-   * Clears the cart by setting cartQuantity to 0 for all products
+   * Clears the cart by resetting stockNumber and setting cartQuantity to 0 for all products
    */
   const clearCart = () => {
     updateFields("cartQuantity", 0);
+    /*  products.forEach((product) => {
+      updateSingleField(
+        "stockNumber",
+        product.stockNumber + product.cartQuantity,
+        product.id,
+      );
+    }); */
     fetchProductList();
   };
 

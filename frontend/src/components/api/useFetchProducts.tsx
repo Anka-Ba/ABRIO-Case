@@ -6,6 +6,7 @@ import {
   getDocs,
   orderBy,
   query,
+  updateDoc,
   writeBatch,
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
@@ -68,5 +69,27 @@ export const useFetchProducts = () => {
     }
   };
 
-  return { productList, loading, error, fetchProductList, updateFields };
+  /**
+   * Sets field to value for product with id
+   * @param fieldName
+   * @param value
+   * @param id
+   */
+  const updateSingleField = async (
+    fieldName: string,
+    value: number | string,
+    id: string,
+  ) => {
+    const productDoc = doc(db, "Product", id);
+    await updateDoc(productDoc, { [fieldName]: value });
+  };
+
+  return {
+    productList,
+    loading,
+    error,
+    fetchProductList,
+    updateFields,
+    updateSingleField,
+  };
 };

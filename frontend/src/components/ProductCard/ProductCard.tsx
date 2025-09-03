@@ -1,16 +1,20 @@
 import type { Product } from "../../types/types";
 import styles from "./ProductCard.module.css";
 import PlaceholderImage from "../../assets/images/placeholder-image.jpg";
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../../config/firebase";
 type ProductCardProps = {
   product: Product;
   fetchProductList: () => Promise<void>;
+  updateSingleField: (
+    fieldName: string,
+    value: string | number,
+    id: string,
+  ) => Promise<void>;
 };
 
 export const ProductCard = ({
   product,
   fetchProductList,
+  updateSingleField,
 }: ProductCardProps) => {
   /**
    * Increases the quantity in the shopping cart by one
@@ -19,8 +23,8 @@ export const ProductCard = ({
    * @param id of the product to be updated
    */
   const addToCart = async (id: string) => {
-    const productDoc = doc(db, "Product", id);
-    await updateDoc(productDoc, { cartQuantity: product.cartQuantity + 1 });
+    updateSingleField("cartQuantity", product.cartQuantity + 1, id);
+    /* updateSingleField("stockNumber", product.stockNumber - 1, id); */
     fetchProductList();
     console.log(
       `Product with id ${id} was added to the cart, Quantity in cart: ${product.cartQuantity}`,
